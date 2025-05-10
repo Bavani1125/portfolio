@@ -1,0 +1,211 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Hi, I'm <span class="highlight">Bavani Karthikeyan Janaki</span></h1>
+        <h2 class="hero-subtitle">Software Engineer & Compliance Specialist</h2>
+        <p class="hero-text">
+            Graduate student pursuing Master's in Computer and Information Science with a strong foundation in both technology and business operations.
+        </p>
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Contact Me</a>
+            <a href="#about" class="btn btn-secondary">About Me</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="profile-img-container">
+            <img src="{{ url_for('static', filename='img/profile-placeholder.jpg') }}" alt="Profile Image" class="profile-img">
+        </div>
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section id="about" class="about-section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+        <p>
+            I am a graduate student pursuing Master's in Computer and Information Science at Long Island University with a strong foundation in both technology and business operations. My previous experience includes working at Accenture, where I gained valuable insights into consulting and project management, as well as a role as an Internal Auditor specializing in SOX and Health Insurance Portability and Accountability Act compliance.
+        </p>
+        <p>
+            As I proactively explore internship opportunities for the summer of 2025, I am eager to leverage my skills in technology, data analysis, and compliance within a dynamic and innovative organization.
+        </p>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience-section">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+        {% for exp in experiences %}
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>{{ exp.title }}</h3>
+                    <h4>{{ exp.company }}</h4>
+                    <p class="timeline-date">{{ exp.start_date }} - {{ exp.end_date }}</p>
+                    <p class="timeline-location">{{ exp.location }}</p>
+                    <p class="timeline-description">{{ exp.description }}</p>
+                    <p class="timeline-skills"><strong>Skills:</strong> {{ exp.skills }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="education-section">
+    <h2 class="section-title">Education</h2>
+    <div class="education-cards">
+        {% for edu in educations %}
+            <div class="education-card">
+                <div class="education-card-header">
+                    <h3>{{ edu.degree }}</h3>
+                    <h4>{{ edu.institution }}</h4>
+                </div>
+                <div class="education-card-body">
+                    <p><strong>Graduation:</strong> {{ edu.graduation_date }}</p>
+                    <p><strong>GPA:</strong> {{ edu.gpa }}</p>
+                    <p><strong>Achievements:</strong> {{ edu.achievements }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills-section">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-container">
+        {% for skill in skills %}
+            <div class="skill-category">
+                <h3>{{ skill.category }}</h3>
+                <ul class="skill-list">
+                    {% for item in skill.items.split(', ') %}
+                        <li class="skill-item">{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+        {% for project in projects %}
+            <div class="project-card">
+                <div class="project-image">
+                    {% if project.image %}
+                        <img src="{{ url_for('static', filename='img/projects/' + project.image) }}" alt="{{ project.title }}">
+                    {% else %}
+                        <div class="project-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="project-content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    {% if project.link %}
+                        <a href="{{ project.link }}" class="btn btn-sm btn-outline" target="_blank">View Project</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section id="certifications" class="certifications-section">
+    <h2 class="section-title">Certifications</h2>
+    <div class="certification-cards">
+        {% for cert in certifications %}
+            <div class="certification-card">
+                <div class="certification-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="certification-content">
+                    <h3>{{ cert.name }}</h3>
+                    <p><strong>Organization:</strong> {{ cert.organization }}</p>
+                    <p>{{ cert.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>Feel free to reach out if you're interested in my work or would like to collaborate on a project.</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>bavanikarthikeyan11@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (201) 467-6757</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>New York, USA</span>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="contact-form-container">
+            <form action="{{ url_for('main.contact') }}" method="POST" class="contact-form">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.name.label }}
+                    {{ form.name(class="form-control") }}
+                    {% if form.name.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label }}
+                    {{ form.email(class="form-control") }}
+                    {% if form.email.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.message.label }}
+                    {{ form.message(class="form-control", rows=5) }}
+                    {% if form.message.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.message.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

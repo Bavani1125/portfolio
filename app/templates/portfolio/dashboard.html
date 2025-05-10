@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %}
+    <section class="dashboard-section">
+        <h1 class="dashboard-title">Welcome, {{ current_user.username }}</h1>
+        
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Work Experience</h3>
+                    <p>3 positions</p>
+                </div>
+                <a href="{{ url_for('portfolio.experience') }}" class="stat-link">View <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Education</h3>
+                    <p>2 degrees</p>
+                </div>
+                <a href="{{ url_for('portfolio.education') }}" class="stat-link">View <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Projects</h3>
+                    <p>3 projects</p>
+                </div>
+                <a href="{{ url_for('portfolio.projects') }}" class="stat-link">View <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Certifications</h3>
+                    <p>2 certificates</p>
+                </div>
+                <a href="{{ url_for('portfolio.certifications') }}" class="stat-link">View <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        
+        <div class="dashboard-actions">
+            <div class="action-card">
+                <h3>Profile Information</h3>
+                <p>Manage your personal information and credentials</p>
+                <a href="{{ url_for('auth.profile') }}" class="btn btn-primary">Edit Profile</a>
+            </div>
+            
+            <div class="action-card">
+                <h3>Portfolio Content</h3>
+                <p>Update your work experience, projects, and skills</p>
+                <div class="btn-group">
+                    <a href="{{ url_for('portfolio.experience') }}" class="btn btn-outline">Experience</a>
+                    <a href="{{ url_for('portfolio.projects') }}" class="btn btn-outline">Projects</a>
+                    <a href="{{ url_for('portfolio.skills') }}" class="btn btn-outline">Skills</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-preview">
+            <h2>Portfolio Preview</h2>
+            <p>This is how visitors will see your portfolio</p>
+            <div class="preview-frame">
+                <iframe src="{{ url_for('main.index') }}" title="Portfolio Preview"></iframe>
+            </div>
+            <a href="{{ url_for('main.index') }}" class="btn btn-secondary" target="_blank">View Full Portfolio</a>
+        </div>
+    </section>
+{% endblock %}
